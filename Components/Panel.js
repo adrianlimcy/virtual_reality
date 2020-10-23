@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Animated,
   StyleSheet,
   Text,
   View,
@@ -11,14 +12,23 @@ export default class Panel extends React.Component {
   constructor () {
     super()
     this.state = {
-      open: true
+      open: true,
+      opacity: new Animated.Value(1)
     }
   }
 
+  componentDidUpdate() {
+    const { open, opacity } = this.state
+    Animated.timing(opacity, {
+      toValue: open ? 1 : 0,
+      duration: 800
+    }).start()
+  }
+
   render() {
-    const { open } = this.state
+    const { opacity } = this.state
     return (
-      <View style={[styles.panel, ...(!open ? [{ display: 'none' }] : []) ]}>
+      <Animated.View style={[styles.panel, { opacity } ]}>
         <View style={styles.greetingBox}>
           <Text style={styles.greeting}>
             Welcome to this world!
@@ -30,7 +40,7 @@ export default class Panel extends React.Component {
           >
             <Text style={styles.close}>Close X</Text>
           </VrButton>
-      </View>
+      </Animated.View>
     );
   }
 };

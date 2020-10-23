@@ -5,3 +5,4 @@
 4.  mkdir Components
 5.  mv index.js components/Panel.js
 6.  touch  index.js
+7.  touch Components/Navigation.js
