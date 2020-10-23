@@ -14,7 +14,9 @@ const backgrounds = [
     'beach.jpg',
     'landscape.jpg',
     'mountain.jpg',
-    'winter.jpg'
+    'winter.jpg',
+    'office.jpg',
+    'test.jpg'
 ]
 
 export default class Navigation extends React.Component {
